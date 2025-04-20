@@ -2,7 +2,6 @@ import Env from '@ioc:Adonis/Core/Env'
 import Route from '@ioc:Adonis/Core/Route'
 import RouteNotFoundException from 'App/Exceptions/RouteNotFoundException'
 import { SiteRoutes } from './routes/SiteRoutes'
-import { MeRoutes } from './routes/MeRoutes'
 
 //base url handling
 Route.get('/', ({ response }) =>
@@ -15,7 +14,6 @@ Route.get('/', ({ response }) =>
 
 Route.group(() => {
   SiteRoutes()
-  MeRoutes()
 }).prefix('api/v1')
 
 //handle unknown routes

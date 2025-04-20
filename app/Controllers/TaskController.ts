@@ -18,15 +18,18 @@ export default class TaskController {
   }
 
   // @ts-ignore
-  public async index({ request, response, transform }: HttpContextContract) {
+  public async index({ auth, request, response, transform }: HttpContextContract) {
     await request.validate(ListTaskRequest)
+
+    const userAuthData = auth.use('api').user!
 
     const list = await this.taskRepo.getAll({
       q: request.input('q', null),
       page: request.input('page', 1),
       limit: request.input('limit', 25),
       status: request.input('status', null),
-      priority: request.input('priority', null)
+      priority: request.input('priority', null),
+      owner_id: userAuthData.uuid
     })
 
     const serializedList = list.serialize()
