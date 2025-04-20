@@ -1,0 +1,19 @@
+services:
+  app:
+    container_name: ${COMPOSE_PROJECT_NAME:-app}-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${COMPOSE_APP_PORT:-3335}:3335"
+    environment:
+      NODE_ENV: development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
