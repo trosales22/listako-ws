@@ -25,9 +25,6 @@ export default class GeneralConstants {
     [this.GENERAL_STATUS_TYPES.INACTIVE]: 'Inactive',
   }
 
-  public static BUSINESS_VEHICLE_PREFIX = 'BV'
-  public static PARKING_LOGS_PREFIX = 'PL'
-
   public static MONTH_NAMES = {
     1: 'January',
     2: 'February',
